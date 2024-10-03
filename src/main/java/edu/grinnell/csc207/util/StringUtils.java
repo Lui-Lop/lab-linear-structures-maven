@@ -9,19 +9,39 @@ import java.io.PrintWriter;
  * Assorted utilities for working with strings.
  * 
  * @author Samuel A. Rebelsky
- * @author Your Name Here
- */ 
+ * @author Luis Lopez
+ * @author Paden Houck
+ */
 public class StringUtils {
   // +------------------+--------------------------------------------
   // | Provided methods |
   // +------------------+
-    
+
   /**
    * Determine whether the parens match in string.
+   * 
+   * @throws Exception
    */
-  public static boolean checkMatching(String str) {
+  public static boolean checkMatching(String str) throws Exception {
     Stack<Character> parens = new LinkedStack<Character>();
-    return false;       // STUB
+    for (int i = 0; i < str.length(); i++) {
+      if (str.charAt(i) == '(' || str.charAt(i) == '[') {
+        parens.push(str.charAt(i));
+      } else if (str.charAt(i) == ')') {
+        if (parens.peek() == '[') {
+          return false;
+        } else if (parens.peek() == '(') {
+          parens.pop();
+        }
+      } else if (str.charAt(i) == ']') {
+        if (parens.peek() == '(') {
+          return false;
+        } else if (parens.peek() == '[') {
+          parens.pop();
+        }
+      }
+    }
+    return true;
   } // checkMatching
-} // class StringUtils    
+} // class StringUtils
 
