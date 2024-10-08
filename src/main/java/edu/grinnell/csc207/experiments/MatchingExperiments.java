@@ -1,5 +1,7 @@
 package edu.grinnell.csc207.experiments;
 
+import edu.grinnell.csc207.util.StringUtils;
+
 import java.io.PrintWriter;
 
 /**
@@ -20,7 +22,7 @@ public class MatchingExperiments {
     pen.print("checkMatching(\"" + str + "\") = ");
     pen.flush();
     try {
-      pen.println(checkMatching(str));
+      pen.println(StringUtils.checkMatching(str));
     } catch (Exception e) {
       pen.println("*** ERROR *** " + e.toString());
     } // try/catch
