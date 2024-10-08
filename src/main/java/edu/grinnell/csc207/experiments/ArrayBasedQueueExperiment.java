@@ -7,7 +7,8 @@ import edu.grinnell.csc207.linear.ReportingLinearStructure;
  * A very simple experiment with ArrayBasedQueues.
  *
  * @author Samuel A. Rebelsky
- * @author Your Name Here
+ * @author Luis Lopez
+ * @author Sara Jaljaa
  */
 public class ArrayBasedQueueExperiment {
   /**
@@ -35,12 +36,13 @@ public class ArrayBasedQueueExperiment {
 
     // We've put and get the same number of elements, it
     // should be empty
+
     expt.isEmpty();
 
     /*
     // It's always good to see what happens after you've cleared
     // out a structure. So add a few more elements.
-    // We'll leave this test until we've worked out some kinks (Dave?)
+    // We'll leave this test until we've worked out some kinks (Dave?) */
     expt.put("e");
     expt.peek();
     expt.put("f");
@@ -51,9 +53,8 @@ public class ArrayBasedQueueExperiment {
     expt.get();
     // And we're back down to the empty queue
     expt.isEmpty();
-    */
 
-    /*
+    
     // An iteration experiment, once we've workd out some kinks (Ray?)
     expt.put("a");
     expt.put("b");
@@ -64,7 +65,7 @@ public class ArrayBasedQueueExperiment {
     expt.get();
     expt.get();
     expt.get();
-     */
+    
     
     /*
     // Future tests, once we've worked out some more kinks (Pete

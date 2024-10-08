@@ -7,7 +7,8 @@ import java.util.NoSuchElementException;
  * Queues implemented with arrays.
  *
  * @author Samuel A. Rebelsky
- * @author Your Name Here
+ * @author Luis Lopez
+ * @author Sara Jaljaa
  */
 public class ArrayBasedQueue<T> implements Queue<T> {
   // +--------+----------------------------------------------------------
@@ -29,6 +30,11 @@ public class ArrayBasedQueue<T> implements Queue<T> {
    */
   int size;
 
+  /**
+   * 
+   */
+  int index;
+
   // +--------------+----------------------------------------------------
   // | Constructors |
   // +--------------+
@@ -46,6 +52,7 @@ public class ArrayBasedQueue<T> implements Queue<T> {
     this.values = (T[]) new Object[capacity];
     this.front = 0;
     this.size = 0;
+    this.index = 0;
   } // ArayBasedQueue(int capacity)
 
   // +---------------+---------------------------------------------------
@@ -69,6 +76,7 @@ public class ArrayBasedQueue<T> implements Queue<T> {
     } // this.isFull()
     this.values[this.back()] = val;
     ++this.size;
+    ++this.index;
   } // put(T)
 
   @Override
@@ -78,10 +86,9 @@ public class ArrayBasedQueue<T> implements Queue<T> {
     } // if empty
     // Grab and clear the element at the front of the queue
     T result = this.values[this.front];
-    this.values[this.front] = null;
-    ++this.front;
+    this.values[this.front++] = null;
     // We're removing an element, so decrement the size
-    // --this.size;
+    --this.size;
     // And we're done
     return result;
   } // get(T)
@@ -117,7 +124,10 @@ public class ArrayBasedQueue<T> implements Queue<T> {
    * Get the index of the back of the queue. The back is where we add the next element.
    */
   int back() {
-    return this.size;
+    if (this.index >= this.size) {
+      return this.front;
+    }
+    return this.index;
   } // back()
 
 } // class ArrayBasedQueue<T>
