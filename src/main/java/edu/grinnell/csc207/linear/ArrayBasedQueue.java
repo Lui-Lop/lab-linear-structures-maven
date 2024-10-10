@@ -9,6 +9,7 @@ import java.util.NoSuchElementException;
  * @author Samuel A. Rebelsky
  * @author Luis Lopez
  * @author Sara Jaljaa
+ * @author Moise Milenge
  */
 public class ArrayBasedQueue<T> implements Queue<T> {
   // +--------+----------------------------------------------------------
@@ -138,6 +139,19 @@ class ArrayBasedQueueIterator<T> implements Iterator<T> {
   // | Fields |
   // +--------+
 
+  /**
+   * The current position in the iteration.
+   */
+  int i;
+
+  /**
+   * The array that contains the values in the stack.
+   */
+  T[] values;
+
+  ArrayBasedQueue<T> q;
+
+
   // +--------------+----------------------------------------------------
   // | Constructors |
   // +--------------+
@@ -146,7 +160,8 @@ class ArrayBasedQueueIterator<T> implements Iterator<T> {
    * Create a new iterator.
    */
   public ArrayBasedQueueIterator(ArrayBasedQueue<T> q) {
-    // STUB
+    this.q = q;
+    this.i = 0;
   } // ArrayBasedQueueIterator
 
   // +---------+---------------------------------------------------------
@@ -158,14 +173,12 @@ class ArrayBasedQueueIterator<T> implements Iterator<T> {
     if (!this.hasNext()) {
       throw new NoSuchElementException("no elements remain");
     } // if no elements
-    // STUB
-    throw new NoSuchElementException("unimplemented");
+    return this.values[i++];
   } // next()
 
   @Override
   public boolean hasNext() {
-    // STUB
-    return false;
+    return i < q.size;
   } // hasNext()
 
   @Override
